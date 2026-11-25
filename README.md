@@ -1,104 +1,32 @@
 # CSU-ISS FinTrack (Financial Tracker)
 
-A web-based financial tracking and audit-compliant ledger system built for the **Caraga State University – Information System Society (CSU-ISS)**. FinTrack replaces manual recordkeeping with role-based transaction management, real-time balance summaries, inactivity screen locking, and an immutable audit trail[cite: 6, 17].
+## 1. Overview
+**CSU-ISS FinTrack** is a web-based financial tracking and audit-compliant ledger system built for the **Caraga State University – Information System Society (CSU-ISS)**. It replaces manual spreadsheet and paper recordkeeping with role-based transaction management, real-time balance summaries, inactivity screen locking, and an immutable audit trail to ensure financial transparency and accountability for student organization officers and advisers.
 
+- **GitHub Repository:** https://github.com/svt-fintrack/FinTrack
 - **Live Deployment:** https://fintrack-q4ik.onrender.com
-- **Course:** CSC 106 – Software Engineering 1 (Phase 4)
 
----
+## 2. Features (Implemented)
+- **Role-Based Authentication & Access Control (`FR-001`, `FR-008`, `FR-010`):** Secure login and route protection enforcing distinct permissions for Treasurer/Finance Officers, Organization President, and Organization Adviser.
+- **Income & Expense Transaction Management (`FR-002`, `FR-003`, `FR-004`):** Create, edit, and soft-delete financial ledger entries with category tagging, reference numbers, and validation.
+- **Search, Filtering & Ledger History (`FR-005`):** Filter transactions by type (Income/Expense), category, date range, and keyword search.
+- **Real-Time Financial Dashboard & Liquidation Totals (`FR-006`):** Automatically computes Total Income, Total Expenses, and Current Balance while excluding soft-deleted records (`is_deleted = false`).
+- **Immutable Audit Trail & Atomic Logging (`FR-009`, `LW9-F3`):** Every create, edit, soft-delete, and permanent-delete action executes inside an atomic PostgreSQL transaction alongside its corresponding `audit_logs` record.
+- **Inactivity Screen Lock (`SRS Sec. 5.1.9`):** Automatically locks active officer sessions after 5 minutes of inactivity to prevent unauthorized access on shared devices.
 
-## Team SVT
-- **Ezekiah S. Garcia** – Project Leader / Backend & Database Architecture
-- **Lucea Kaye P. Alejo** – Authentication, RBAC & Documentation Lead
-- **Kate Angel M. Evaristo** – Reporting, Audit Trail & QA Lead
-- **Cian Ynthoni Cesario P. Milabat** – Frontend UI/UX & Client Modules
+## 3. Technologies and Versions
+- **Runtime & Backend:** Node.js v20 LTS (CommonJS), Express.js v4.x
+- **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES2022)
+- **Database:** PostgreSQL 16 (hosted on Supabase via Session Pooler) with `pg` driver
+- **Security & Auth:** JSON Web Tokens (`jsonwebtoken`), `bcryptjs`, `dotenv`
+- **Hosting & Version Control:** Render (Web Service) and GitHub (`svt-fintrack/FinTrack`)
 
----
-
-## Tech Stack & Architecture
-FinTrack follows a **3-Tier Layered Modular Monolith** architecture:
-- **Presentation Tier:** HTML5, CSS3, and Vanilla JavaScript (hosted on Render)
-- **Application / Business Logic Tier:** Node.js v20 LTS & Express.js REST API (`jwt`, `bcryptjs`)
-- **Data Access & Persistence Tier:** PostgreSQL 16 via `pg.Pool` (hosted on Supabase IPv4 Session Pooler)
-
----
-
-## Project Structure
-```text
-csu-iss-fintrack/
-├── public/                       # Tier 1: Presentation Layer (Client Web UI)
-│   ├── index.html                # Main dashboard, ledger, and screen lock views
-│   ├── style.css                 # Responsive institutional styling
-│   └── js/                       # Modular client scripts
-│       ├── apiClient.js          # Centralized fetch wrapper with JWT headers
-│       ├── auth.js               # Login and inactivity Screen Lock handler
-│       ├── dashboard.js          # Summary cards and analytics rendering
-│       └── transactions.js       # Transaction CRUD and search/filter UI
-├── src/
-│   ├── middleware/
-│   │   └── authMiddleware.js     # Tier 2: JWT verification & RBAC route guard
-│   ├── services/                 # Tier 2: Business Logic & Domain Services
-│   │   ├── authService.js        # Credential verification & profile updates
-│   │   ├── transactionService.js # CRUD, soft/hard delete & atomic audit UoW
-│   │   ├── reportingService.js   # Dashboard totals & liquidation reports
-│   │   └── auditService.js       # Immutable activity audit trail
-│   ├── repositories/             # Tier 3: Data Access Repositories
-│   │   ├── userRepository.js
-│   │   ├── transactionRepository.js
-│   │   └── auditRepository.js
-│   └── db/
-│       └── databasePool.js       # PostgreSQL SSL connection pool & transaction helper
-├── schema.sql                    # PostgreSQL relational schema & seed accounts
-├── server.js                     # Express application entry point
-├── package.json                  # Project dependencies and start scripts
-├── STYLE_GUIDE.md                # Team coding & architectural conventions
-├── CONTRIBUTING.md               # Git branching, commit & PR workflow
-└── .gitignore                    # Excludes node_modules/ and .env secrets
-```
----
-
-## Local Setup & Run Instructions
-
-### Prerequisites
-- **Node.js** (v18 or v20 LTS) and **npm**
-- A **PostgreSQL** database or free **Supabase** project
-
-### Installation Steps
-1. **Clone the repository:**
+## 4. Installation and Setup
+1. **Prerequisites:**
+   - Install **Node.js v20 LTS** (or newer) and **npm**
+   - Install **Git**
+   - Access to a **PostgreSQL 16** database (local PostgreSQL or Supabase project)
+2. **Clone the Repository:**
    ```bash
-   git clone [https://github.com/YOUR-ORG-NAME/csu-iss-fintrack.git](https://github.com/YOUR-ORG-NAME/csu-iss-fintrack.git)
-   cd csu-iss-fintrack
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables:**
-   Create a `.env` file in the project root (never commit this file to Git):
-   ```env
-   DATABASE_URL=postgresql://postgres.<PROJECT-REF>:<YOUR-PASSWORD>@[aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres](https://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres)
-   JWT_SECRET=csu_iss_fintrack_prod_secret_2026
-   PORT=5000
-   ```
-
-4. **Initialize the database schema:**
-   Open your Supabase **SQL Editor** (or local PostgreSQL client), paste the contents of `schema.sql`, and run it to create the `users`, `transactions`, and `audit_logs` tables along with the seed accounts.
-
-5. **Run the application:**
-   ```bash
-   npm start
-   ```
-   Open your browser and visit `http://localhost:5000`.
-
----
-
-## Default Officer Credentials (Testing)
-| Role | Username | Default Password |
-| :--- | :--- | :--- |
-| **President** | `president` | `password123` |
-| **Treasurer** | `treasurer` | `password123` |
-| **Vice President** | `vp` | `password123` |
-| **Auditor** | `auditor` | `password123` |
-| **Adviser** | `adviser` | `password123` |
+   git clone [https://github.com/svt-fintrack/FinTrack.git](https://github.com/svt-fintrack/FinTrack.git)
+   cd FinTrack
