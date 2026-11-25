@@ -2,24 +2,24 @@
 
 A web-based financial tracking and audit-compliant ledger system built for the **Caraga State University – Information System Society (CSU-ISS)**. FinTrack replaces manual recordkeeping with role-based transaction management, real-time balance summaries, inactivity screen locking, and an immutable audit trail[cite: 6, 17].
 
-- **Live Deployment:** https://fintrack-q4ik.onrender.com[cite: 3, 4]
-- **Course:** CSC 106 – Software Engineering 1 (Phase 4)[cite: 6, 17]
+- **Live Deployment:** https://fintrack-q4ik.onrender.com
+- **Course:** CSC 106 – Software Engineering 1 (Phase 4)
 
 ---
 
 ## Team SVT
-- **Ezekiah S. Garcia** – Project Leader / Backend & Database Architecture[cite: 6, 17]
-- **Lucea Kaye P. Alejo** – Authentication, RBAC & Documentation Lead[cite: 6, 17]
-- **Kate Angel M. Evaristo** – Reporting, Audit Trail & QA Lead[cite: 6, 17]
-- **Cian Ynthoni Cesario P. Milabat** – Frontend UI/UX & Client Modules[cite: 6, 17]
+- **Ezekiah S. Garcia** – Project Leader / Backend & Database Architecture
+- **Lucea Kaye P. Alejo** – Authentication, RBAC & Documentation Lead
+- **Kate Angel M. Evaristo** – Reporting, Audit Trail & QA Lead
+- **Cian Ynthoni Cesario P. Milabat** – Frontend UI/UX & Client Modules
 
 ---
 
 ## Tech Stack & Architecture
-FinTrack follows a **3-Tier Layered Modular Monolith** architecture[cite: 7, 17]:
-- **Presentation Tier:** HTML5, CSS3, and Vanilla JavaScript (hosted on Render)[cite: 7, 17]
-- **Application / Business Logic Tier:** Node.js v20 LTS & Express.js REST API (`jwt`, `bcryptjs`)[cite: 7, 17]
-- **Data Access & Persistence Tier:** PostgreSQL 16 via `pg.Pool` (hosted on Supabase IPv4 Session Pooler)[cite: 7, 17]
+FinTrack follows a **3-Tier Layered Modular Monolith** architecture:
+- **Presentation Tier:** HTML5, CSS3, and Vanilla JavaScript (hosted on Render)
+- **Application / Business Logic Tier:** Node.js v20 LTS & Express.js REST API (`jwt`, `bcryptjs`)
+- **Data Access & Persistence Tier:** PostgreSQL 16 via `pg.Pool` (hosted on Supabase IPv4 Session Pooler)
 
 ---
 
@@ -54,8 +54,7 @@ csu-iss-fintrack/
 ├── STYLE_GUIDE.md                # Team coding & architectural conventions
 ├── CONTRIBUTING.md               # Git branching, commit & PR workflow
 └── .gitignore                    # Excludes node_modules/ and .env secrets
-```[cite: 17]
-
+```
 ---
 
 ## Local Setup & Run Instructions
@@ -69,12 +68,12 @@ csu-iss-fintrack/
    ```bash
    git clone [https://github.com/YOUR-ORG-NAME/csu-iss-fintrack.git](https://github.com/YOUR-ORG-NAME/csu-iss-fintrack.git)
    cd csu-iss-fintrack
-   ```[cite: 17]
+   ```
 
 2. **Install dependencies:**
    ```bash
    npm install
-   ```[cite: 17]
+   ```
 
 3. **Configure environment variables:**
    Create a `.env` file in the project root (never commit this file to Git):
@@ -82,7 +81,7 @@ csu-iss-fintrack/
    DATABASE_URL=postgresql://postgres.<PROJECT-REF>:<YOUR-PASSWORD>@[aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres](https://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres)
    JWT_SECRET=csu_iss_fintrack_prod_secret_2026
    PORT=5000
-   ```[cite: 17]
+   ```
 
 4. **Initialize the database schema:**
    Open your Supabase **SQL Editor** (or local PostgreSQL client), paste the contents of `schema.sql`, and run it to create the `users`, `transactions`, and `audit_logs` tables along with the seed accounts.
@@ -91,7 +90,7 @@ csu-iss-fintrack/
    ```bash
    npm start
    ```
-   Open your browser and visit `http://localhost:5000`[cite: 17].
+   Open your browser and visit `http://localhost:5000`.
 
 ---
 
