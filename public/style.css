@@ -1,4 +1,3 @@
-
 :root {
   /* Core palette */
   --navy-950: #0f2236;
@@ -157,7 +156,7 @@ textarea { resize: vertical; }
 .alert-neutral { background: var(--sky-50); border: 1px solid #cfe1f0; border-left: 4px solid var(--sky-500); color: var(--navy-700); }
 
 /* Logos (multiply hides the JPG's white background; keep on light surfaces) */
-.logo-box-login { width: 300px; height: 315px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+.logo-box-login { width: 360px; height: 380px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
 .logo-box-sidebar { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .logo-box-lock { width: 120px; height: 120px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; }
 .brand-logo-img, .sidebar-logo-img, .lock-logo-img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
@@ -193,16 +192,16 @@ textarea { resize: vertical; }
   content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
   background: linear-gradient(90deg, var(--teal-500), var(--amber-500), var(--sky-500));
 }
-.login-brand h1 { font-size: 1.9rem; margin-bottom: 10px; color: var(--navy-700); font-weight: 900; letter-spacing: -0.3px; }
+.login-brand h1 { font-size: 2.1rem; margin-bottom: 10px; color: var(--navy-700); font-weight: 900; letter-spacing: -0.3px; }
 .login-brand > div:first-child p { font-size: 0.96rem; line-height: 1.6; color: var(--slate-600); font-weight: 500; }
 .brand-footer { border-top: 1px solid var(--iss-green-border); padding-top: 20px; font-size: 0.85rem; color: var(--slate-600); }
 .brand-footer strong { color: var(--teal-600); display: block; margin-bottom: 4px; font-size: 0.92rem; }
 
 .login-form-area { padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; background: var(--white); }
-.login-form-area h2 { font-size: 2rem; font-weight: 800; color: var(--navy-900); margin-bottom: 8px; letter-spacing: -0.4px; }
-.login-form-area .subtitle { font-size: 0.98rem; color: var(--slate-600); margin-bottom: 28px; }
+.login-form-area h2 { font-size: 2rem; font-weight: 800; color: var(--navy-900); margin-bottom: 8px; letter-spacing: -0.4px; text-align: center; }
+.login-form-area .subtitle { font-size: 0.98rem; color: var(--slate-600); margin-bottom: 28px; text-align: center; }
 .login-form-area .form-group { margin-bottom: 22px; }
-.login-form-area label { display: block; font-size: 0.94rem; font-weight: 700; color: var(--navy-900); margin-bottom: 8px; }
+.login-form-area label { display: block; font-size: 0.94rem; font-weight: 700; color: var(--navy-900); margin-bottom: 8px; text-align: left; }
 .login-form-area input { padding: 14px 16px; border-radius: 12px; font-size: 1rem; background: #fafcfd; }
 .login-form-area input:focus { background: var(--white); }
 
@@ -212,9 +211,9 @@ textarea { resize: vertical; }
 
 .login-form-area .btn-primary { margin-top: 8px; padding: 15px 20px; font-size: 1.02rem; border-radius: 12px; }
 
-.demo-credentials { margin-top: 32px; padding-top: 22px; border-top: 1px dashed var(--slate-300); }
+.demo-credentials { margin-top: 32px; padding-top: 22px; border-top: 1px dashed var(--slate-300); text-align: center; }
 .demo-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-500); margin-bottom: 12px; }
-.demo-btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
+.demo-btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .demo-pill {
   padding: 8px 16px; border-radius: 999px;
   border: 1px solid var(--iss-green-border); background: var(--mint-50); color: var(--teal-700);
@@ -473,7 +472,7 @@ tbody tr:hover td { background: var(--mint-50); }
 @media (max-width: 850px) {
   .login-card, .kpi-grid, .dashboard-split, .filter-grid, .form-row { grid-template-columns: 1fr; }
   .login-card { min-height: auto; }
-  .logo-box-login { width: 180px; height: 180px; }
+  .logo-box-login { width: 220px; height: 220px; }
   .login-form-area { padding: 32px 24px; }
   .login-brand { border-right: none; border-bottom: 1px solid var(--iss-blue-border); }
 
