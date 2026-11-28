@@ -261,7 +261,7 @@ textarea { resize: vertical; }
   display: flex; align-items: center; gap: 10px;
   border-bottom: 3px solid var(--teal-500);
 }
-.sidebar-header h3 { font-size: 0.98rem; color: var(--navy-700); font-weight: 900; }
+.sidebar-header h3 { font-size: 1.25rem; color: var(--navy-700); font-weight: 900; }
 .sidebar-header span { font-size: 0.72rem; color: var(--teal-600); font-weight: 700; }
 
 .session-box { padding: 16px 20px; background: rgba(255, 255, 255, 0.06); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
